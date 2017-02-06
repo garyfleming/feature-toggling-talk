@@ -5,10 +5,6 @@ theme: Sketchnote, 1
 
 @garyfleming
 
-^ Hello, my name is Gary Fleming and I'm going to talk to you today about feature toggling. While this talk is mainly aimed at developers in medium to large projects, there are useful points in here for product managers and owners too..
-
-^	OR
-
 ^	As a developer or project manager, it's not always easy to ensure that multiple features for a project can be built separately. Branching has long been a favoured technique when managing parallel development, but comes at a cost. In this talk, we'll see what that cost is and explore a better alternative. (Hint: it's feature-toggling)
 
 ---
@@ -18,8 +14,10 @@ theme: Sketchnote, 1
 
 ^ For much of this talk I'm going to assume that:
 * you know what version control is,
-* you're using a traditional version control system like Subversion or Perforce,
-If you're using distributed system like Git, these lessons still apply, but with slight tweaks.
+* you're using it.
+
+^ Doesn't particularly matter if it's traditional (SVN) or distributed (git), as
+they're the same in practice for our purposes.
 
 ---
 
@@ -35,9 +33,18 @@ If you're using distributed system like Git, these lessons still apply, but with
 
 ---
 
+# Continuous Integration
+
+^ Before that, an important tangent: let's talk about Continuous Integration. I'm
+increasingly of the opinion that the way to really do Agile is by focussing on
+Continuous Delivery of value. That, in turn, heavily implies Continuous Integration.
+
+
+---
+
 # Continuous Integration - What?
 
-^ Before that, an important tangent: What is continuous integration? Broadly speaking it's the notion that when we're working with other developers in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
+^ Broadly speaking it's the notion that when we're working with other developers in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
 
 ---
 
@@ -64,22 +71,24 @@ If you're using distributed system like Git, these lessons still apply, but with
 
 ^	To make those tasks possible we need to ensure three other things are always true:
 	* Any behaviour we want our system to exhibit MUST have a test, so we can ensure that behaviour remains.
-	* Any new behaviour we want our system to exhibit MUST also have a test, so we can ensure that behaviour remains in the future.
+	* Any new behaviour we want our system to exhibit MUST also have a test, so we can ensure that behaviour remains in the future and that we get the behaviour we expect.
 	* Our build as a whole must be fast and reliable. No-one will check the build is working before committing if that takes hours or may not work for reasons outwith their control.
 
 ---
 
 # Continuous Integration - Why?
 
-^ Communication, No Conflict, No Rework
+* Communication,
+* Less Conflict,
+* Less Rework
 
-^ Why do we do all this? Because continuous integration is a definitive and relatively unambiguous way for teams to communicate. If you use Continuous integration, you know immediately when your changes are causing a problem for some else and vice versa; as opposed to finding out weeks or months later. Find problems early is much better than finding them later and have to rework.
+^ Why do we do all this? Because continuous integration is a definitive and relatively unambiguous way for teams to communicate. If you use Continuous integration, you know immediately when your changes are causing a problem for some else and vice versa; as opposed to finding out weeks or months later. Find problems early is much better than finding them later and have to rework. You should absolutely have real-world conversations, early and often, to avoid potential conflicts, but there will always be ambiguity there. Committing tested code makes that much harder.
 
 ---
 
 # Feature-Branching - The Idea
 
-^	 Now back to solving our problem of trying to deliver multiple features: one solution is called Feature-Branching, or sometimes just branching. The idea here is that for every feature that you want to deliver, you create a new branch in your version control system. All work for that feature is then done exclusively on that branch, and any changes on trunk are merged onto the branch (usually in branches, periodically).
+^	 Now back to solving our problem of trying to deliver multiple features: one solution is called Feature-Branching, or sometimes just branching. The idea here is that for every feature that you want to deliver, you create a new branch in your version control system. All work for that feature is then done exclusively on that branch, and any changes on trunk are merged onto the branch (usually in branches, periodically). In the Github Pull-Request style, these merges are often further delayed by code reviews.
 
 ---
 
@@ -99,17 +108,19 @@ If you're using distributed system like Git, these lessons still apply, but with
 
 ^	Well, no. Because if you're doing feature branching, you're not doing continuous integration and getting the benefits of doing that. Every branch is now spending weeks or months separate from the trunk, i.e not integrated, and the potential for conflicts increases rapidly with every day and every branch. You're no longer communicating.
 
+^ "Continuous" does not mean "once, at the end", and "integration" does not mean "keeping everything apart until we can't"
+
 ---
 
 # Feature Branching - Manual Merging
 
-^	[good point, but poorly made. Fix this.]Merging is also error-prone and manual. Because you're relying on people to bring together disparate threads of your system months after they're finished, they have to reason about multiple things that they may not have seen and may not fully understand.
+^	Merging is also error-prone and manual. Because you're relying on people to bring together disparate threads of your system months after they're finished, they have to reason about multiple things that they may not have seen and may not fully understand.
 
 ---
 
 # Feature Branching - Summary
 
-^	Dan Bardot said: "Feature Branching is a poor man's modular architecture, instead of building systems with the ability to easily swap in and out features at runtime/deploytime they couple themselves to the source control providing this mechanism through manual merging."
+^	Dan Bardot said: "Feature Branching is a poor man's modular architecture, instead of building systems with the ability to easily swap in and out features at runtime/deploy time they couple themselves to the source control providing this mechanism through manual merging."
 ^	Bardot is hinting at our alternative: Feature Toggling.
 
 ---
@@ -135,6 +146,18 @@ If you're using distributed system like Git, these lessons still apply, but with
 # Feature Toggling - Modification
 
 ^		For modifications, it's not that much harder: you take the existing version of the code and put an abstraction in front of it that provides a nice interface to both the new and old versions of your code. You then make all of your existing code use that interface. You write the new implementation, and have the toggle switch between the new and old at will.
+
+---
+
+# Complexity and Debris
+
+^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
+
+---
+
+# Debris
+
+^ Those if statements? They should be rare. You want to toggle at a higher level of abstraction, where possible. Rather than embedding if-statements into your classes, try to create multiple implementations of your classes and toggle between them. That lets you move the toggles from deep in your logic, and out into the wiring (Spring).
 
 ---
 
