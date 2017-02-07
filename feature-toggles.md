@@ -1,7 +1,7 @@
 theme: Sketchnote, 1
 
 # Feature Toggling
-## An Alternative to Branching
+## Continuous Integration Done Right
 
 @garyfleming
 
@@ -12,7 +12,8 @@ theme: Sketchnote, 1
 # Version Control
 
 
-^ For much of this talk I'm going to assume that:
+^ This is a little more hands-on than many of my previous talks, but you don't
+need much tech knowledge. For much of this talk I'm going to assume that:
 * you know what version control is,
 * you're using it.
 
@@ -36,7 +37,7 @@ they're the same in practice for our purposes.
 # Continuous Integration
 
 ^ Before that, an important tangent: let's talk about Continuous Integration. I'm
-increasingly of the opinion that the way to really do Agile is by focussing on
+increasingly of the opinion that the best way to really do Agile is by focussing on
 Continuous Delivery of value. That, in turn, heavily implies Continuous Integration.
 
 
@@ -149,9 +150,31 @@ Continuous Delivery of value. That, in turn, heavily implies Continuous Integrat
 
 ---
 
-# Complexity and Debris
+# Deployment Is Not Release
+
+^ Doing feature toggling gives us an important capability. We can deploy our code
+many times a day. Rather than being the scary thing we do once every few weeks or
+months, it becomes routine/boring. That's a good thing.
+The features we develop can be deployed but we can hide them from release until we're
+ready to show them to the world.
+
+---
+
+# Strategies
+
+^ Moreover, it gives us options for how we release features. I've described toggles
+as being on/off, but that's not necessarily the case. You could use a toggling solution
+that lets you switch them on for individual users, or roles, or IP addresses. You
+could see how effective features are by switching them on for a small percentage
+of users. 1% of users. Aged 18-35. In Edinburgh. Then 5%. Then all of Scotland etc
+If it doesn't work out, switch it back off and most people never saw it.
+
+---
+
+# Complexity
 
 ^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
+Also the alternative is ALSO complex, in a way that you can't easily see.
 
 ---
 
