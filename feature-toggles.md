@@ -1,7 +1,7 @@
 theme: Sketchnote, 1
 
 # Feature Toggling
-## Continuous Integration Done Right
+## Continuous Delivery Done Right
 
 @garyfleming
 
@@ -17,8 +17,7 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 * you know what version control is,
 * you're using it.
 
-^ Doesn't particularly matter if it's traditional (SVN) or distributed (git), as
-they're the same in practice for our purposes.
+^ If you're not using version control, you have far bigger problems. Doesn't particularly matter if it's traditional (SVN) or distributed (git), as they're the same in practice for our purposes.
 
 ---
 
@@ -38,7 +37,7 @@ they're the same in practice for our purposes.
 
 ^ Before that, an important tangent: let's talk about Continuous Integration. I'm
 increasingly of the opinion that the best way to really do Agile is by focussing on
-Continuous Delivery of value. That, in turn, heavily implies Continuous Integration.
+Continuous Delivery of value. In a software context, that often means continuous delivery of features. That, in turn, heavily implies Continuous Integration.
 
 
 ---
@@ -176,11 +175,33 @@ If it doesn't work out, switch it back off and most people never saw it.
 ^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
 Also the alternative is ALSO complex, in a way that you can't easily see.
 
+
 ---
 
-# Debris
+# Roles - Developers
 
-^ Those if statements? They should be rare. You want to toggle at a higher level of abstraction, where possible. Rather than embedding if-statements into your classes, try to create multiple implementations of your classes and toggle between them. That lets you move the toggles from deep in your logic, and out into the wiring (Spring).
+^ Need to be aware that your code can go live at any time, so if people shouldn't see it, toggle it off.
+Have conversations with your product owners so you know when they want stuff off at first.
+
+---
+
+# Roles - Testers
+
+^ Make sure the devs give you a way of managing the toggles so you can test properly.
+Have conversations so you know where different toggles might collide. Assume there are more than the devs tell you.
+
+---
+
+# Roles - UXers
+
+^ Play with strategies. Toggles let you do rolling A/B tests. Use that capability to improve.
+
+---
+
+# Roles - Product Owners
+
+^ You don't need to manage deployments any more (if you ever did)
+You can now truly own the product by deciding when things are ready, based on customer feedback. This is powerful.
 
 ---
 
