@@ -84,6 +84,12 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^ Why do we do all this? Because continuous integration is a definitive and relatively unambiguous way for teams to communicate. If you use Continuous integration, you know immediately when your changes are causing a problem for some else and vice versa; as opposed to finding out weeks or months later. Find problems early is much better than finding them later and have to rework. You should absolutely have real-world conversations, early and often, to avoid potential conflicts, but there will always be ambiguity there. Committing tested code makes that much harder.
 
+--- 
+
+# Continuous Integration - When?
+
+^ If CI is about getting feedback quickly so we can work together better, how often should we be getting that feedback? Personally, I want to know about those conflicts quickly. At least every day, preferably far more often. More on that later.
+
 ---
 
 # Feature-Branching - The Idea
@@ -104,7 +110,7 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
-# Feature Branching is Anti-CI
+# Problem: Feature Branching is Anti-CI
 
 ^	Well, no. Because if you're doing feature branching, you're not doing continuous integration and getting the benefits of doing that. Every branch is now spending weeks or months separate from the trunk, i.e not integrated, and the potential for conflicts increases rapidly with every day and every branch. You're no longer communicating.
 
@@ -112,7 +118,7 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
-# Feature Branching - Manual Merging
+# Problem: Feature Branching - Manual Merging
 
 ^	Merging is also error-prone and manual. Because you're relying on people to bring together disparate threads of your system months after they're finished, they have to reason about multiple things that they may not have seen and may not fully understand.
 
@@ -120,7 +126,9 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 # Feature Branching - Summary
 
-^	Dan Bardot said: "Feature Branching is a poor man's modular architecture, instead of building systems with the ability to easily swap in and out features at runtime/deploy time they couple themselves to the source control providing this mechanism through manual merging."
+>	"Feature Branching is a poor man's modular architecture. Instead of building systems with the ability to easily swap in and out features at runtime/deploy time, they couple themselves to the source control; providing this mechanism through manual merging."
+-- Dan Bardot
+
 ^	Bardot is hinting at our alternative: Feature Toggling.
 
 ---
@@ -174,7 +182,6 @@ If it doesn't work out, switch it back off and most people never saw it.
 
 ^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
 Also the alternative is ALSO complex, in a way that you can't easily see.
-
 
 ---
 
