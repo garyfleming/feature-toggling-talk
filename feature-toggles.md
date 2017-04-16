@@ -9,15 +9,21 @@ theme: Sketchnote, 1
 
 ---
 
-# Version Control
+# Context
+
+* Mostly Co-located Team,
+* Building Services (i.e. not products),
+* Using Version Control,
+* Some Trust.
 
 
 ^ This is a little more hands-on than many of my previous talks, but you don't
 need much tech knowledge. For much of this talk I'm going to assume that:
+* We're talking about a team who work near each other,
+* Who trust each other to some degree,
+* Who are building a service suitable for CD, as opposed to a project that might be more stochastic.
 * you know what version control is,
-* you're using it.
 
-^ If you're not using version control, you have far bigger problems. Doesn't particularly matter if it's traditional (SVN) or distributed (git), as they're the same in practice for our purposes.
 
 ---
 
@@ -84,7 +90,7 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^ Why do we do all this? Because continuous integration is a definitive and relatively unambiguous way for teams to communicate. If you use Continuous integration, you know immediately when your changes are causing a problem for some else and vice versa; as opposed to finding out weeks or months later. Find problems early is much better than finding them later and have to rework. You should absolutely have real-world conversations, early and often, to avoid potential conflicts, but there will always be ambiguity there. Committing tested code makes that much harder.
 
---- 
+---
 
 # Continuous Integration - When?
 
@@ -181,7 +187,26 @@ If it doesn't work out, switch it back off and most people never saw it.
 # Complexity
 
 ^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
-Also the alternative is ALSO complex, in a way that you can't easily see.
+
+---
+
+# Most of the Complexity Issues...
+
+> "Today’s realisation: most of the issues people have with feature toggling are also there when branching, but easier to see when toggling."
+-- Me, pretty soon after giving this talk a while ago.
+
+^ Also the alternative is ALSO complex, in a way that you can't easily see.
+
+---
+
+# Back To Context
+
+* Mostly Co-located Team,
+* Building Services (i.e. not products),
+* Using Version Control,
+* Some Trust.
+
+^ Having said all that, let's think about the context I laid out at the start again, and consider what happens when that's not right. The Github PR model makes more sense when you're building a product that makes sense to bundle versions (i.e. not CD), when you're building with other developers around the world that you don't necessarily trust to get it right, or when timezones and remote working mean that alignment is tricky.
 
 ---
 
