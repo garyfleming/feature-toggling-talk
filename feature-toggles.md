@@ -9,6 +9,15 @@ theme: Zurich, 1
 
 ---
 
+# TL;DR
+
+* Deployment is painful,
+* Feature Toggles are simple but powerful,
+* Some cats,
+* No Fable.
+
+---
+
 # Where Does it Hurt?
 
 ^ TODO toothache pic?
@@ -47,17 +56,23 @@ theme: Zurich, 1
 
 ---
 
+# Metathesiophobia
+
+^ but underpinning this is Metathesiophobia
+
+---
+
 # Metathesiophobia: Fear of Change
 
 ^ TODO evil clown pic?
 
-^ But underpinning this is also a fear of change. To deliver value and gain feedback, we need to release. Releasing causes pain. We've been hurt enough and don't want hurt again, so we delay it and our feedback along with it. So how do we break this cycle?
+^ ... a fear of change. To deliver value and gain feedback, we need to release. Releasing causes pain. We've been hurt enough and don't want hurt again, so we delay it and our feedback along with it. So how do we break this cycle?
 
 ---
 
 # Deployment Is Not Release
 
-^ We do it by making deploying software in a continuous and controlled way, such that we can gain feedback without showing everyone.
+^ We do it by making deploying software in a continuous and controlled way such that we can gain feedback without showing everyone, the norm.
 That is, we make it so that Deployment Is Not Release.
 
 ---
@@ -84,7 +99,7 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 * Who are building a service suitable for CD, as opposed to a project that might be more stochastic.
 * you know what version control is,
 
-
+---
 
 # Scenario: Problem
 
@@ -104,6 +119,23 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 increasingly of the opinion that the best way to really do Agile is by focussing on
 Continuous Delivery of value. In a software context, that often means continuous delivery of features. That, in turn, heavily implies Continuous Integration.
 
+---
+
+# The Cat Theory of CI Hardness
+
+![inline](cat1.jpg)
+
+---
+
+# The Cat Theory of CI Hardness
+
+![inline](cat2.jpg)
+
+---
+
+# The Cat Theory of CI Hardness
+
+![inline](cat3.gif)
 
 ---
 
