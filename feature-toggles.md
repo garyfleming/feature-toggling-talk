@@ -5,22 +5,25 @@ theme: Zurich, 1
 
 @garyfleming
 
-^ Often, when I start working with a new client, I ask people the same question. It's one that I find gets us quickly to some interesting areas to improve.
 
 ---
+
+[.build-lists: true]
 
 # TL;DR
 
 * Deployment is painful,
 * Feature Toggles are simple but powerful,
-* Some cats,
-* No Fable.
+* No fable,
+* Some cat pics.
 
 ---
 
 # Where Does it Hurt?
 
 ^ TODO toothache pic?
+
+^ Often, when I start working with a new client, I ask people the same question. It's one that I find gets us quickly to some interesting areas to improve.
 
 ^ Now, I might formulate it slightly different, but the aim is to genuinely try to find things that people hate dealing with. The answers I get with alarming frequency all have something in common.
 
@@ -115,6 +118,7 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 
 # Continuous Integration
 
+
 ^ Before that, an important tangent: let's talk about Continuous Integration. I'm
 increasingly of the opinion that the best way to really do Agile is by focussing on
 Continuous Delivery of value. In a software context, that often means continuous delivery of features. That, in turn, heavily implies Continuous Integration.
@@ -136,6 +140,11 @@ Continuous Delivery of value. In a software context, that often means continuous
 # The Cat Theory of CI Hardness
 
 ![inline](cat3.gif)
+
+---
+
+# Continuous Integration
+
 
 ---
 
