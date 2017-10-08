@@ -8,3 +8,9 @@ markdown. Specifically, they're designed to be viewed using Deckset.
 
 The slides themselves are intentionally sparse, but the raw source (feature-toggles.md) contains my notes for the talk. I've yet to change the content, so I'm sure
 there are some things with which I no longer agree. YMMV.
+
+# Variants
+
+There is one major variant of this talk, Deployment is not Release.
+
+It was created as a slightly longer and broader version. It's in the [deploynotrelease branch](https://github.com/garyfleming/feature-toggling-talk/tree/deploynotrelease).
