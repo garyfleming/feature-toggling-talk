@@ -129,17 +129,27 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ![inline](cat1.jpg)
 
+^ Now, someone in a previous talk said that CI is hard. I would politely disagree. It, like any new thing, just requires caution. Caution isn't fear. Let me explain with cats.
+
+^ If there is a cat you want to pet, you need to approach it slowly and carefully. If you approach recklessly, what will happen?
+
 ---
 
 # The Cat Theory of CI Hardness
 
 ![inline](cat2.jpg)
 
+^ Something like this. It'll either attack or run away. Either it's a bad time for all involved.
+
 ---
 
 # The Cat Theory of CI Hardness
 
 ![inline](cat3.gif)
+
+^ But if you take your time, you get to have some lovely pets with a floofy cat.
+
+^ (This picture was taken the day Ramona and I were Purr Programming.)
 
 ---
 
