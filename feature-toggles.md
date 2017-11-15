@@ -1,10 +1,12 @@
 theme: Zurich, 1
 
-# Deployment Is Not Release
-## From Painful to Perfect
+# Feature Toggles
+## Moving Safely in the Face of Change
 
 @garyfleming
 
+
+^ I'm here to talk about change. And changing safely. We're moving into a world where continuous deployment and continuous integration are becoming the norm. Devops is enabling change and operability at a level we haven't seen before. How do we make sure that we're keeping up with that, and safely?
 
 ---
 
@@ -14,16 +16,21 @@ theme: Zurich, 1
 
 * Deployment is painful,
 * Feature Toggles are simple but powerful,
-* No fable,
 * Some cat pics.
+
+^ Also aware that it's late in the day. So I'm going to do you all a favour and give you the three take-aways at the start so you can zone out for half an hour.
+
+---
+
+# A Starting Point
+
+^ Often, when I start working with a new client, I ask people the same question. It's one that I find gets us quickly to some interesting areas to improve.
 
 ---
 
 # Where Does it Hurt?
 
-^ TODO toothache pic?
-
-^ Often, when I start working with a new client, I ask people the same question. It's one that I find gets us quickly to some interesting areas to improve.
+![inline](toothache.gif)
 
 ^ Now, I might formulate it slightly different, but the aim is to genuinely try to find things that people hate dealing with. The answers I get with alarming frequency all have something in common.
 
@@ -35,15 +42,15 @@ theme: Zurich, 1
 
 ---
 
-# Where Does it Hurt, Testers?
-
-^ Testers often say its knowing what release and features are in each environment. They find it frustrating when they find apparent issues with systems to be dismissed with: "Well, that's not in that environment yet."
-
----
-
 # Where Does it Hurt, Product Owners?
 
 ^ Product Owners often say it's just getting things into the world. Because releases don't happen that often, it takes a long time to deliver the value they promised. Planning becomes difficult because there's a weird rhythm around releases: they take time, make people afraid to make changes that are too big.
+
+---
+
+# Where Does it Hurt, Testers?
+
+^ Testers often say its knowing what release and features are in each environment. They find it frustrating when they find apparent issues with systems to be dismissed with: "Well, that's not in that environment yet."
 
 ---
 
@@ -78,12 +85,6 @@ theme: Zurich, 1
 ^ We do it by making deploying software in a continuous and controlled way such that we can gain feedback without showing everyone, the norm.
 That is, we make it so that Deployment Is Not Release.
 
----
-
-# Deployment Is Not Release
-## (Roll Credits)
-
-^ Let's talk about how do to that. But first. Context.
 
 ---
 
@@ -125,11 +126,27 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
+^ Now I know that some of you are thinking, "Yeah, we do CI/CD, this could be useful". And I know that some of you are now thinking, "Hah, we only release once a month so this is irrelevant"
+^ Quite the opposite. Because some of us are doing it.
+
+---
+
+![inline](dog-eating.gif)
+
+^ And while you're not paying attention to where the world is going, we're going to eat your lunch.
+^ Then you'll end up working with us, making this relevant. Or umm, not working. Does that sound like where you want to be?
+
+---
+
+# CI is Hard?
+
+^ Now, someone in a previous talk said that CI is hard. I would politely disagree. It, like any new thing, just requires caution. Caution isn't fear. Let me explain with cats.
+
+---
+
 # The Cat Theory of CI Hardness
 
 ![inline](cat1.jpg)
-
-^ Now, someone in a previous talk said that CI is hard. I would politely disagree. It, like any new thing, just requires caution. Caution isn't fear. Let me explain with cats.
 
 ^ If there is a cat you want to pet, you need to approach it slowly and carefully. If you approach recklessly, what will happen?
 
@@ -151,16 +168,12 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^ (This picture was taken the day Ramona and I were Purr Programming.)
 
----
-
-# Continuous Integration
-
 
 ---
 
 # Continuous Integration - What?
 
-^ Broadly speaking it's the notion that when we're working with other developers in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
+^ Broadly speaking it's the notion that when we're working with other contributors in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
 
 ---
 
@@ -189,6 +202,25 @@ Continuous Delivery of value. In a software context, that often means continuous
 	* Any behaviour we want our system to exhibit MUST have a test, so we can ensure that behaviour remains.
 	* Any new behaviour we want our system to exhibit MUST also have a test, so we can ensure that behaviour remains in the future and that we get the behaviour we expect.
 	* Our build as a whole must be fast and reliable. No-one will check the build is working before committing if that takes hours or may not work for reasons outwith their control.
+
+---
+
+# Reliable, fast builds
+
+^ Let's take a second on this. Software production is a TEAM sport.  We are ALL responsible for making tests fast.
+
+---
+
+# Test Pyramid vs Selenium
+
+^ Now I don't want to get into an argument about Selenium etc being unfit for purpose. Please, have some outside in tests.
+^ That said, I've seen nothing else that turns a good solid build into this any quicker.
+
+---
+
+![inline](fire.gif)
+
+^ Please, stop at literally a handful and find better ways of testing.
 
 ---
 
@@ -378,4 +410,18 @@ We lose our fear of change, because change is always happening and it is mundane
 
 # Summary
 
-^	Think about what this achieves: all of your team can work together and see exactly what's coming down the line in a way that is safe. If conflicts arise you know about them immediately and can resolve them before rework becomes painful, and you can keep changes isolated as long as you need. Compare that to the alternatives, and it's a clear advantage. Thank you.
+^	Think about what this achieves: all of your team can work together and see exactly what's coming down the line in a way that is safe. If conflicts arise you know about them immediately and can resolve them before rework becomes painful, and you can keep changes isolated as long as you need. Compare that to the alternatives, and it's a clear advantage.
+
+---
+
+# Thank you
+
+@garyfleming
+
+![inline](cat3.gif)
+
+---
+
+# Thank you
+
+@garyfleming
