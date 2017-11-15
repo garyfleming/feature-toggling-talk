@@ -1,15 +1,93 @@
-theme: Sketchnote, 1
+theme: Zurich, 1
 
-# Feature Toggling
-## Continuous Delivery Done Right
+# Deployment Is Not Release
+## From Painful to Perfect
 
 @garyfleming
 
-^	As a developer or project manager, it's not always easy to ensure that multiple features for a project can be built separately. Branching has long been a favoured technique when managing parallel development, but comes at a cost. In this talk, we'll see what that cost is and explore a better alternative. (Hint: it's feature-toggling)
 
 ---
 
-# Context
+[.build-lists: true]
+
+# TL;DR
+
+* Deployment is painful,
+* Feature Toggles are simple but powerful,
+* No fable,
+* Some cat pics.
+
+---
+
+# Where Does it Hurt?
+
+^ TODO toothache pic?
+
+^ Often, when I start working with a new client, I ask people the same question. It's one that I find gets us quickly to some interesting areas to improve.
+
+^ Now, I might formulate it slightly different, but the aim is to genuinely try to find things that people hate dealing with. The answers I get with alarming frequency all have something in common.
+
+---
+
+# Where Does it Hurt, Developers?
+
+^ Developers can take a while but often say it's doing a release. That thing they only do once a month, or three months, because it takes all weekend to ensure that it happens correctly. Who wants to spend all weekend at work?
+
+---
+
+# Where Does it Hurt, Testers?
+
+^ Testers often say its knowing what release and features are in each environment. They find it frustrating when they find apparent issues with systems to be dismissed with: "Well, that's not in that environment yet."
+
+---
+
+# Where Does it Hurt, Product Owners?
+
+^ Product Owners often say it's just getting things into the world. Because releases don't happen that often, it takes a long time to deliver the value they promised. Planning becomes difficult because there's a weird rhythm around releases: they take time, make people afraid to make changes that are too big.
+
+---
+
+# Where Does it Hurt, Team?
+
+^ The other thing that everyone said, in some form, was that it bothered them that they couldn't tell whether what they were doing would be useful. Sure, it'd pass the tests, and look about right, and go into production (eventually), but would it deliver the value they had hoped for? Is it what they really needed?
+
+---
+
+# Gain Feedback. Deliver Value.
+
+^ While I could do a full talk on the answers I've had to "Where Does It Hurt?", let's focus on these answers. People want to deliver things of value, but don't have the feedback they need to do that in a timely fashion. That's a problem.
+
+---
+
+# Metathesiophobia
+
+^ but underpinning this is Metathesiophobia
+
+---
+
+# Metathesiophobia: Fear of Change
+
+^ TODO evil clown pic?
+
+^ ... a fear of change. To deliver value and gain feedback, we need to release. Releasing causes pain. We've been hurt enough and don't want hurt again, so we delay it and our feedback along with it. So how do we break this cycle?
+
+---
+
+# Deployment Is Not Release
+
+^ We do it by making deploying software in a continuous and controlled way such that we can gain feedback without showing everyone, the norm.
+That is, we make it so that Deployment Is Not Release.
+
+---
+
+# Deployment Is Not Release
+## (Roll Credits)
+
+^ Let's talk about how do to that. But first. Context.
+
+---
+
+# Scenario: Context
 
 * Mostly Co-located Team,
 * Building Services (i.e. not products),
@@ -24,10 +102,9 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 * Who are building a service suitable for CD, as opposed to a project that might be more stochastic.
 * you know what version control is,
 
-
 ---
 
-# The Problem
+# Scenario: Problem
 
 ^	Imagine that you and your team have been asked to deliver several new features to your online store: the payment provider is being replaced; the user profile section is being integrated with some social media site; and the recommendation system is being tweaked. All these features are separate, but there are some shared points in the code.
 
@@ -41,9 +118,42 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 
 # Continuous Integration
 
+
 ^ Before that, an important tangent: let's talk about Continuous Integration. I'm
 increasingly of the opinion that the best way to really do Agile is by focussing on
 Continuous Delivery of value. In a software context, that often means continuous delivery of features. That, in turn, heavily implies Continuous Integration.
+
+---
+
+# The Cat Theory of CI Hardness
+
+![inline](cat1.jpg)
+
+^ Now, someone in a previous talk said that CI is hard. I would politely disagree. It, like any new thing, just requires caution. Caution isn't fear. Let me explain with cats.
+
+^ If there is a cat you want to pet, you need to approach it slowly and carefully. If you approach recklessly, what will happen?
+
+---
+
+# The Cat Theory of CI Hardness
+
+![inline](cat2.jpg)
+
+^ Something like this. It'll either attack or run away. Either it's a bad time for all involved.
+
+---
+
+# The Cat Theory of CI Hardness
+
+![inline](cat3.gif)
+
+^ But if you take your time, you get to have some lovely pets with a floofy cat.
+
+^ (This picture was taken the day Ramona and I were Purr Programming.)
+
+---
+
+# Continuous Integration
 
 
 ---
@@ -185,6 +295,7 @@ If it doesn't work out, switch it back off and most people never saw it.
 ---
 
 # Complexity
+## (NOT in the Cynefin sense)
 
 ^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
 
@@ -206,37 +317,65 @@ If it doesn't work out, switch it back off and most people never saw it.
 * Using Version Control,
 * Some Trust.
 
-^ Having said all that, let's think about the context I laid out at the start again, and consider what happens when that's not right. The Github PR model makes more sense when you're building a product that makes sense to bundle versions (i.e. not CD), when you're building with other developers around the world that you don't necessarily trust to get it right, or when timezones and remote working mean that alignment is tricky.
+^ Having said all that, let's think about the context I laid out near the start again, and consider what happens when that's not right. The Github PR model makes more sense when you're building a product that makes sense to bundle versions (i.e. not CD), when you're building with other developers around the world that you don't necessarily trust to get it right, or when timezones and remote working mean that alignment is tricky.
 
 ---
 
-# Roles - Developers
+# What do we get?
 
-^ Need to be aware that your code can go live at any time, so if people shouldn't see it, toggle it off.
-Have conversations with your product owners so you know when they want stuff off at first.
+^ So, hopefully, I've covered what it is. Let's talk a little bit about what different parts of the team get from using Feature Toggles.
 
 ---
 
-# Roles - Testers
+# What do we get as Developers?
+
+^ It gives developers a good reason (if ever they needed one) to focus on technical excellence. If the code can go live at any time, devs need to be able to handle that smoothly and safely. That becomes a great reason to always have a well-built, well-tested codebase.
+
+---
+
+# What do we get as Developers?
+
+Ask Your Developers:
+
+> "If I were to push every one of your commits live today, what would you want to be in place to feel confident and safe?"
+
+^ This might initially cause fear or panic, as discussed earlier. But it's a great opportunity to have a conversation about what developers need.
+You also want to have conversations with your product owners so you know when they want stuff off at first.
+
+---
+
+# What do we get as Testers?
 
 ^ Make sure the devs give you a way of managing the toggles so you can test properly.
 Have conversations so you know where different toggles might collide. Assume there are more than the devs tell you.
 
 ---
 
-# Roles - UXers
+# What do we get as UXers?
 
 ^ Play with strategies. Toggles let you do rolling A/B tests. Use that capability to improve.
 
 ---
 
-# Roles - Product Owners
+# What do we get as Product Owners?
 
 ^ You don't need to manage deployments any more (if you ever did)
 You can now truly own the product by deciding when things are ready, based on customer feedback. This is powerful.
 
 ---
 
-# Feature Toggling - Summary
+# What do we get as a team?
+
+* Boring releases (GOOD!)
+* Faster feedback, safely.
+* Metathesiophobia removed.
+
+^ As a whole, we get exactly what we set out to get at the start: the ability to do deployment frequently, in a boringly safe way, without actually releasing features until we're ready.
+We get the power to experiment easily and safely so we can gain feedback quickly.
+We lose our fear of change, because change is always happening and it is mundane.
+
+---
+
+# Summary
 
 ^	Think about what this achieves: all of your team can work together and see exactly what's coming down the line in a way that is safe. If conflicts arise you know about them immediately and can resolve them before rework becomes painful, and you can keep changes isolated as long as you need. Compare that to the alternatives, and it's a clear advantage. Thank you.
