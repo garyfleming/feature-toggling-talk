@@ -126,6 +126,8 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
+# "Not My Context"
+
 ^ Now I know that some of you are thinking, "Yeah, we do CI/CD, this could be useful". And I know that some of you are now thinking, "Hah, we only release once a month so this is irrelevant"
 ^ Quite the opposite. Because some of us are doing it.
 
@@ -175,20 +177,6 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^ Broadly speaking it's the notion that when we're working with other contributors in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
 
----
-
-# Continuous Integration - Four Steps
-
-1. Update
-2. Fix
-3. Commit
-4. Automate
-
-^	To do, continuous integration well we do four things:
-	* Before checking in to version control, we need to take everyone else's updates from trunk.
-	* We need to fix any issues we see before we commit our changes. It is therefore _always_ the responsibility of those who are making a change to ensure they work.
-	* To ensure the continuous part, we commit frequently - at least once per day, preferably more often. I often commit safely multiple times an hour. When I can't do commit at least once an hour, it's often a sign that I'm working on something too big.
-	* Finally, we run our build autonomously on a separate machine, so that we know everything works somewhere other than our own machine. This helps find issues.
 
 ---
 
