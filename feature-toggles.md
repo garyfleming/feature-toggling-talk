@@ -22,6 +22,12 @@ theme: Zurich, 1
 
 ---
 
+![inline](amazon.jpg)
+
+^ Having said that, I want you to think about this tweet as we go. It's important.
+
+---
+
 # A Starting Point
 
 ^ Often, when I start working with a new client, I ask people the same question. It's one that I find gets us quickly to some interesting areas to improve.
@@ -88,7 +94,7 @@ That is, we make it so that Deployment Is Not Release.
 
 ---
 
-# Scenario: Context
+# Context
 
 * Mostly Co-located Team,
 * Building Services (i.e. not products),
@@ -170,6 +176,21 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^ (This picture was taken the day Ramona and I were Purr Programming.)
 
+---
+
+# Continuous Integration - Why?
+
+* Communication,
+* Less Conflict,
+* Less Rework
+
+^ Why do we do all this? Because continuous integration is a definitive and relatively unambiguous way for teams to communicate. If you use Continuous integration, you know immediately when your changes are causing a problem for some else and vice versa; as opposed to finding out weeks or months later. Find problems early is much better than finding them later and have to rework. You should absolutely have real-world conversations, early and often, to avoid potential conflicts, but there will always be ambiguity there. Committing tested code makes that much harder.
+
+---
+
+# Continuous Integration - When?
+
+^ If CI is about getting feedback quickly so we can work together better, how often should we be getting that feedback? Personally, I want to know about those conflicts quickly. At least every day, preferably far more often. More on that later.
 
 ---
 
@@ -196,6 +217,7 @@ Continuous Delivery of value. In a software context, that often means continuous
 # Reliable, fast builds
 
 ^ Let's take a second on this. Software production is a TEAM sport.  We are ALL responsible for making tests fast.
+^ If I can convince you of anything, I want that to be that you don't need to automate all the things at every level.
 
 ---
 
@@ -212,19 +234,18 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
-# Continuous Integration - Why?
+# BUT I CAN PARALLELIZE!!!1!
 
-* Communication,
-* Less Conflict,
-* Less Rework
-
-^ Why do we do all this? Because continuous integration is a definitive and relatively unambiguous way for teams to communicate. If you use Continuous integration, you know immediately when your changes are causing a problem for some else and vice versa; as opposed to finding out weeks or months later. Find problems early is much better than finding them later and have to rework. You should absolutely have real-world conversations, early and often, to avoid potential conflicts, but there will always be ambiguity there. Committing tested code makes that much harder.
+^ You can....
 
 ---
 
-# Continuous Integration - When?
+![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)
+![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)
+![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)
+![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)![inline](fire.gif)
 
-^ If CI is about getting feedback quickly so we can work together better, how often should we be getting that feedback? Personally, I want to know about those conflicts quickly. At least every day, preferably far more often. More on that later.
+^ but maybe don't. Seek value further down the test pyramid.
 
 ---
 
@@ -240,7 +261,7 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
-# Feature Branching - Release
+# Feature Branching - Testing
 
 ^	That's really nice because it lets you cherry-pick the features you want to release simply by controlling what you allow into your trunk. If you don't want to release it yet, well, leave it on the branch a bit longer. It also means that you can have as many parallel features in progress as branches, which surely is a good thing?
 
@@ -281,15 +302,19 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
-# Feature Toggling - Additions
+# Feature Toggling - Switches for Features
 
-^	What that looks like: for an a new piece of functionality, it's very straightforward. Your toggle is going to be an on/off state. If the toggle is on, your new feature is included in the runtime. If it's off, it's not. So you can develop something on trunk that may or may not be ready for production yet.
+^ Just wraps the bits of a system related to a new feature in switch. Those pieces are marked as belonging to that feature.
 
 ---
 
-# Feature Toggling - Modification
+![inline](togglz.png)
 
-^		For modifications, it's not that much harder: you take the existing version of the code and put an abstraction in front of it that provides a nice interface to both the new and old versions of your code. You then make all of your existing code use that interface. You write the new implementation, and have the toggle switch between the new and old at will.
+---
+
+# Lots of Libraries
+
+http://featureflags.io/
 
 ---
 
@@ -311,22 +336,6 @@ that lets you switch them on for individual users, or roles, or IP addresses. Yo
 could see how effective features are by switching them on for a small percentage
 of users. 1% of users. Aged 18-35. In Edinburgh. Then 5%. Then all of Scotland etc
 If it doesn't work out, switch it back off and most people never saw it.
-
----
-
-# Complexity
-## (NOT in the Cynefin sense)
-
-^ Doesn't this mean we have lots of extra Complexity with things being on/off, or that our code is littered with if statements? Well, a little. Toggles for making updates should generally be short-lived: you use them to hide a feature, and after that feature is live and has been proven to work, you remove the toggle entirely. Don't let them build up.
-
----
-
-# Most of the Complexity Issues...
-
-> "Today’s realisation: most of the issues people have with feature toggling are also there when branching, but easier to see when toggling."
--- Me, pretty soon after giving this talk a while ago.
-
-^ Also the alternative is ALSO complex, in a way that you can't easily see.
 
 ---
 
@@ -353,25 +362,14 @@ If it doesn't work out, switch it back off and most people never saw it.
 
 ---
 
-# What do we get as Developers?
-
-Ask Your Developers:
-
-> "If I were to push every one of your commits live today, what would you want to be in place to feel confident and safe?"
-
-^ This might initially cause fear or panic, as discussed earlier. But it's a great opportunity to have a conversation about what developers need.
-You also want to have conversations with your product owners so you know when they want stuff off at first.
-
----
-
 # What do we get as Testers?
 
 ^ Make sure the devs give you a way of managing the toggles so you can test properly.
-Have conversations so you know where different toggles might collide. Assume there are more than the devs tell you.
+Have conversations so you know where different toggles might collide. Assume there are more than the devs tell you. Also gives you the chance to make sure a feature is properly tested before users see it.
 
 ---
 
-# What do we get as UXers?
+# What do we get as UX testers?
 
 ^ Play with strategies. Toggles let you do rolling A/B tests. Use that capability to improve.
 
@@ -384,10 +382,23 @@ You can now truly own the product by deciding when things are ready, based on cu
 
 ---
 
+# What do we get as Developers?
+
+Ask Your Developers:
+
+> "If I were to push every one of your commits live today, what would you want to be in place to feel confident and safe?"
+
+^ This might initially cause fear or panic, as discussed earlier. But it's a great opportunity to have a conversation about what developers need.
+You also want to have conversations with your product owners so you know when they want stuff off at first.
+
+
+---
+
 # What do we get as a team?
 
 * Boring releases (GOOD!)
 * Faster feedback, safely.
+* Well tested systems in a CI/CD world.
 * Metathesiophobia removed.
 
 ^ As a whole, we get exactly what we set out to get at the start: the ability to do deployment frequently, in a boringly safe way, without actually releasing features until we're ready.
