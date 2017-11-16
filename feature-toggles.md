@@ -7,7 +7,7 @@ theme: Business Class, 5
 
 ---
 
-# Glasgow
+# Glasgow, Scotland
 
 ![inline](glasgow.jpg)
 
@@ -24,11 +24,13 @@ theme: Business Class, 5
 
 # TL;DR
 
+* Opinions are stated more strong than reality.
 * Deployment is painful,
 * Feature Toggles are simple but powerful,
+* Seek value down the testing pyramid,
 * Some cat pics.
 
-^ Also aware that it's late in the day. So I'm going to do you all a favour and give you the three take-aways at the start so you can zone out for half an hour.
+^ Also aware that it's late in the day. So I'm going to do you all a favour and give you the main take-aways at the start so you can zone out for half an hour.
 
 ---
 
@@ -104,7 +106,7 @@ That is, we make it so that Deployment Is Not Release.
 
 ---
 
-# Context
+# Assumed Context
 
 * Mostly Co-located Team,
 * Building Services (i.e. not products),
@@ -127,7 +129,7 @@ need much tech knowledge. For much of this talk I'm going to assume that:
 
 ---
 
-# Release when?
+# Release When? Test When?
 
 ^	The other part of the problem is that you don't know yet in which order these will be finished, so you don't know which one will go live first. That is, you need to be prepared for any of them to be live before the other ones. This leads to some interesting problems in arranging how you work together without conflicting. What's the solution?
 
@@ -186,6 +188,13 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^ (This picture was taken the day Ramona and I were Purr Programming.)
 
+
+---
+
+# Continuous Integration - What?
+
+^ Broadly speaking it's the notion that when we're working with other contributors in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
+
 ---
 
 # Continuous Integration - Why?
@@ -201,12 +210,6 @@ Continuous Delivery of value. In a software context, that often means continuous
 # Continuous Integration - When?
 
 ^ If CI is about getting feedback quickly so we can work together better, how often should we be getting that feedback? Personally, I want to know about those conflicts quickly. At least every day, preferably far more often. More on that later.
-
----
-
-# Continuous Integration - What?
-
-^ Broadly speaking it's the notion that when we're working with other contributors in a team it's a very good idea to bring our work together frequently so that we know that we're all still aiming for the same goal, without the potential for too many conflicts and issues along the way.
 
 
 ---
@@ -281,22 +284,13 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ^	Well, no. Because if you're doing feature branching, you're not doing continuous integration and getting the benefits of doing that. Every branch is now spending weeks or months separate from the trunk, i.e not integrated, and the potential for conflicts increases rapidly with every day and every branch. You're no longer communicating.
 
+---
+
+## Continuous != "Once, at the end"
+## Integration != "Keeping everything apart until we can't"
+
 ^ "Continuous" does not mean "once, at the end", and "integration" does not mean "keeping everything apart until we can't"
 
----
-
-# Problem: Feature Branching - Manual Merging
-
-^	Merging is also error-prone and manual. Because you're relying on people to bring together disparate threads of your system months after they're finished, they have to reason about multiple things that they may not have seen and may not fully understand.
-
----
-
-# Feature Branching - Summary
-
->	"Feature Branching is a poor man's modular architecture. Instead of building systems with the ability to easily swap in and out features at runtime/deploy time, they couple themselves to the source control; providing this mechanism through manual merging."
--- Dan Bardot
-
-^	Bardot is hinting at our alternative: Feature Toggling.
 
 ---
 
@@ -306,7 +300,7 @@ Continuous Delivery of value. In a software context, that often means continuous
 
 ---
 
-# Feature Toggling - Isolation
+# Feature Toggling - All trunk, all the time
 
 ^	The sharper minded amongst you are thinking, "Sure, you get continuous integration, but what about isolation? How do you develop features together safely?" That's the toggle part. For every piece of code that is either a work in progress or not ready to go live yet, you introduce an abstraction that hides away your implementation changes. You then build a mechanism, a toggle, that lets you switch between different implementations.
 
@@ -328,7 +322,7 @@ http://featureflags.io/
 
 ---
 
-# Deployment Is Not Release
+# Feature Toggling -> Deployment Is Not Release
 
 ^ Doing feature toggling gives us an important capability. We can deploy our code
 many times a day. Rather than being the scary thing we do once every few weeks or
