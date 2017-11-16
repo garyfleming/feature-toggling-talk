@@ -1,12 +1,22 @@
-theme: Zurich, 1
+theme: Business Class, 5
 
 # Feature Toggles
 ## Moving Safely in the Face of Change
 
 @garyfleming
 
+---
+
+# Glasgow
+
+![inline](glasgow.jpg)
+
+---
+
+# Change
 
 ^ I'm here to talk about change. And changing safely. We're moving into a world where continuous deployment and continuous integration are becoming the norm. Devops is enabling change and operability at a level we haven't seen before. How do we make sure that we're keeping up with that, and safely?
+
 
 ---
 
