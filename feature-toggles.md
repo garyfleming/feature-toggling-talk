@@ -428,3 +428,5 @@ We lose our fear of change, because change is always happening and it is mundane
 # Thank you
 
 @garyfleming
+
+https://github.com/garyfleming/feature-toggling-talk
