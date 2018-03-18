@@ -15,3 +15,9 @@ I originally wrote the slides using an HTML-based tool, but I've now converted t
 markdown. Specifically, they're designed to be viewed using Deckset.
 
 The slides themselves are intentionally sparse, but the raw source (feature-toggles.md) contains my notes for the talk.
+
+## Abstract
+
+We want feedback sooner than ever before, while focusing on delivering value quickly and safely. What if we could deploy every commit but ensure everything keeps working? Let's talk about the backbone of continuous delivery: feature toggles.
+
+In this session, we'll ensure everyone understands the basics of continuous integration and delivery, and then probe how feature toggles allow us to explore and experiment safely, while giving new capabilities to our organisations.
